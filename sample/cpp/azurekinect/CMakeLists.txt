@@ -16,9 +16,9 @@ add_executable( azurekinect util.hpp util.cpp kinect.hpp kinect.cpp main.cpp )
 set_property( DIRECTORY PROPERTY VS_STARTUP_PROJECT "azurekinect" )
 
 # Find Package
-find_package( CUBEMOS_SKELETON_TRACKING REQUIRED )
-find_package( k4a REQUIRED )
-find_package( OpenCV REQUIRED )
+find_package( CUBEMOS_SKELETON_TRACKING REQUIRED CONFIG PATHS "$ENV{CUBEMOS_SKEL_SDK}/lib/cmake/CUBEMOS_SKELETON_TRACKING" )
+find_package( k4a REQUIRED CONFIG PATHS "C:/Azure-Kinect-Sensor-SDK/build/src/sdk" )
+find_package( OpenCV REQUIRED CONFIG PATHS "C:/opencv/opencv/build" )
 
 if( CUBEMOS_SKELETON_TRACKING_FOUND AND k4a_FOUND AND OpenCV_FOUND )
   target_link_libraries( azurekinect cubemos_skeleton_tracking )
